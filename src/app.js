@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const app = express();
 const userRouter = require('./api/routes/user.router');
 const authRouter = require('./api/routes/auth.router');
+const reviewRouter = require('./api/routes/review.router');
 const cors = require('cors');
 app.use(cors());
 app.use(express.json());
@@ -14,7 +15,7 @@ mongoose.connect("mongodb+srv://saidamovie:Semaye_1401@cluster0.u5cnm5c.mongodb.
 
 app.use('/api/users', userRouter);
 app.use('/api/auth', authRouter);
-
+app.use('/api/reviews', reviewRouter );
 
 app.use((err, req, res, next) => {
     res.status(err.statusCode || 500).json({
